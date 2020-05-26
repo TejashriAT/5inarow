@@ -19,6 +19,18 @@ void GameLogic::allocateFirstTurns(Player & player1, Player & player2, char choi
     }
 }
 
+void GameLogic::playerOpt (Player& player1, Player& player2)
+{
+     std::cout << "Player1, please enter your name: ";
+     std::cin >> player1;
+     std::cout << "\n";
+     std::cout << "Player2, please enter your name: ";
+     std::cin >> player2;
+     std::cout << "\n";
+     std::cout << "\t \t " << player1<< " \a vs \a " << player2 << "\n";
+
+}
+
 void GameLogic::decideFirstTurn(Player& player1, Player& player2)
 {
     bool chosen = false;
@@ -54,10 +66,10 @@ void GameLogic::game(Board & board, Player& player1, Player& player2, GameLogic&
     std::cout << "Winner: " << m_Winner << "\n";
 
     if (m_Winner == player1.getGamePiece())
-        std::cout << "Player 1 wins the game.\n";
+        std::cout << player1 << "\t wins the game.\n";
 
     if (m_Winner == player2.getGamePiece())
-        std::cout << "Player2 wins the game.\n";
+        std::cout << player2 << "\t wins the game.\n";
 }
 
 void GameLogic::gameRound(Board & board, Player & player1, Player & player2, GameLogic& gameLogic)
@@ -67,7 +79,7 @@ void GameLogic::gameRound(Board & board, Player & player1, Player & player2, Gam
         if (m_Turn == player1.getGamePiece())
         {
             board.displayBoard();
-            std::cout << "Player 1 move.";
+            std::cout << "It's your turn " << player1 << ", please enter column (1-9) : \n";
             player1.move(board);
             m_FoundWinner = board.checkForWinner(gameLogic, player1.getGamePiece());
             changeTurn(player1.getGamePiece());
@@ -76,7 +88,7 @@ void GameLogic::gameRound(Board & board, Player & player1, Player & player2, Gam
         else
         {
             board.displayBoard();
-            std::cout << "Player 2 move.";
+            std::cout << "It's your turn " << player2 << ", please enter column (1-9) : \n";
             player2.move(board);
             m_FoundWinner = board.checkForWinner(gameLogic, player2.getGamePiece());
             changeTurn(player2.getGamePiece());
