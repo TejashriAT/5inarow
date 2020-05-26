@@ -13,6 +13,7 @@ private:
 
     void allocateFirstTurns(Player& player1, Player& player2, char choice);
     void decideFirstTurn(Player& player1, Player& player2);
+    void playerOpt(Player& player1, Player& player2);
     void gameRound(Board& board, Player& player1, Player& player2, GameLogic& gameLogic);
     void changeTurn(char turn);
 
